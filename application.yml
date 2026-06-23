@@ -1,0 +1,11 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+logging:
+  level:
+    root: INFO
+    ma.abb.archive: INFO
