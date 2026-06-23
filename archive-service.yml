@@ -1,5 +1,9 @@
 spring:
   datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME:informix}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.informix.jdbc.IfxDriver
     hikari:
       maximum-pool-size: 1
       minimum-idle: 0
@@ -7,6 +11,26 @@ spring:
       idle-timeout: 60000
       max-lifetime: 300000
   jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
     properties:
       hibernate:
+        dialect: org.hibernate.community.dialect.InformixDialect
+        format_sql: false
+        jdbc:
+          time_zone: UTC
         default_batch_fetch_size: 50
+  data:
+    jpa:
+      repositories:
+        enabled: false
+  cloud:
+    consul:
+      discovery:
+        metadata:
+          archive-year: ${ARCHIVE_YEAR}
+          archive-type: ${ARCHIVE_TYPE}
+archive:
+  year: ${ARCHIVE_YEAR}
+  type: ${ARCHIVE_TYPE}
