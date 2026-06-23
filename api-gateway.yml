@@ -1,6 +1,18 @@
 spring:
   cloud:
-    gateway.server.webflux:
-      httpclient:
-        connect-timeout: 3000
-        response-timeout: 30s
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: cc-aggregation
+              uri: lb://cc-aggregation-service
+              predicates:
+                - Path=/cc/**
+          httpclient:
+            connect-timeout: 3000
+            response-timeout: 30s
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,gateway
