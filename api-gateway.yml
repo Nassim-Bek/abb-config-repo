@@ -8,6 +8,10 @@ spring:
               uri: lb://cc-aggregation-service
               predicates:
                 - Path=/cc/**
+            - id: cc-aggregation-openapi
+              uri: lb://cc-aggregation-service
+              predicates:
+                - Path=/v3/api-docs/**,/v3/api-docs.yaml,/swagger-ui/**,/swagger-ui.html
           httpclient:
             connect-timeout: 3000
             response-timeout: 30s
