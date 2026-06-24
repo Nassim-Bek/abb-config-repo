@@ -2,3 +2,10 @@ spring:
   mvc:
     problemdetails:
       enabled: true
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+openapi:
+  server-url: ${OPENAPI_SERVER_URL:http://localhost:8081}
