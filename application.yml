@@ -6,9 +6,10 @@ spring:
       host: ${CONSUL_HOST:localhost}
       port: ${CONSUL_PORT:8500}
       discovery:
-        instance-id: ${spring.application.name}:${random.value}
+        instance-id: ${CONSUL_INSTANCE_ID:${spring.application.name}}
         prefer-ip-address: true
         health-check-path: /actuator/health
+        health-check-critical-timeout: 1m
   security:
     oauth2:
       resourceserver:
